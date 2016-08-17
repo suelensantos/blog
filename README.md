@@ -1,2 +1,4 @@
-# blog
-Blog com post de comentários
+blog
+----
+
+Blog com post de comentários.
