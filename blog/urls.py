@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from meu_blog.models import Artigo
+
 urlpatterns = [
-    url(r'^polls/', include('polls.urls')),
+   # url(r'^polls/', include('polls.urls')), 
+    url(r'^meu_blog/', include('meu_blog.urls')),
     url(r'^admin/', admin.site.urls),
 ]
