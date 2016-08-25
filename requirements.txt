@@ -1,4 +1,4 @@
 Django==1.10
 ipython
-pysqlite
+MySQL-python
 

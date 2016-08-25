@@ -16,4 +16,3 @@ class Artigo(models.Model):
    foi_publicado_recentemente.admin_order_field = 'publicacao'
    foi_publicado_recentemente.boolean = True
    foi_publicado_recentemente.short_description = 'Publicado recentemente?'
-
