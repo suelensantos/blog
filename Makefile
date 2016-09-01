@@ -1,4 +1,4 @@
-init: 
+setup: 
 	$ pip install -r requirements.txt
 
 run: 
@@ -7,18 +7,12 @@ run:
 create-superuser-admin:
 	$ python manage.py createsuperuser
 
-db_migrate:
+db-migrate: 
 	$ python manage.py migrate
 
-login-mysql: 
-	$ mysql -u root
+create-db: 
+	$ mysql -u root -e "create database db_blog"; 
 
 python-shell:
 	$ python manage.py shell
-
-
-# coloca para criar o db db_blog?
-
-
-
 
