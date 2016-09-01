@@ -40,29 +40,29 @@ meu_blog/
 A configuração necessária será feita a partir do arquivo Makefile com o comando `make target_label`, onde `target_label` é uma alvo presente no arquivo a ser executado. 
 
 1. Instale as dependências do python para o projeto com o comando abaixo:
-```
-$ make init
-```
+	```
+	$ make init
+	```
 2. Crie um banco de dados chamado `db_blog`. Para isso, é preciso que o servidor MySQL esteja executando na máquina. Execute o comando abaixo:
-```
-$ make create-db
-```
+	```
+	$ make create-db
+	```
 3. É preciso criar tabelas no banco de dados antes de ser usado. Para fazer isso, execute o comando a seguir:
-```
-$ make db-migrate
-```
+	```
+	$ make db-migrate
+	```
 4. Crie um usuário admin onde será criado um nome para usuário, um e-mail e uma senha (mínimo de 8 caracteres e que seja diferente do nome e e-mail). Execute o comando a seguir:
-```
-$ make create-superuser-admin
-```
+	```
+	$ make create-superuser-admin
+	```
 5. Agora rode o servidor admin do Django com o comando abaixo:
-```
-$ make run
-```
-Ao entrar na página do administrador `http://localhost:8000/admin`, será pedido o nome e a senha. Basta entrar com os dados criados no paso anterior.
+	```
+	$ make run
+	```
+	Ao entrar na página do administrador `http://localhost:8000/admin`, será pedido o nome e a senha. Basta entrar com os dados criados no paso anterior.
 
 6. Este item é opcional. Caso queira entrar na shell do python, execute o comando abaixo:
-```
-$ make python-shell
-```
+	```
+	$ make python-shell
+	```
 
