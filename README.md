@@ -1,6 +1,6 @@
-=================
+-----------------
 Projeto Blog/Post
-=================
+----------------- 
 
 No projeto blog, o diretório **blog** apresentará uma pasta **meu_blog** que é a aplicação do projeto, e uma outra pasta **blog**, onde estão as configurações criadas do projeto. 
 
