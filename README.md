@@ -37,12 +37,12 @@ meu_blog/
 
 #### Passos a seguir:
 
-A configuração necessária será feita a partir do arquivo Makefile com o comando `make target_label`, onde `target_label` é uma alvo presente no arquivo a ser executado. 
+A configuração necessária será feita a partir do arquivo Makefile com o comando `make target_label`, onde `target_label` é um alvo presente no arquivo a ser executado. 
 
 1. Instale as dependências do python para o projeto com o comando abaixo:
 
 	```
-	$ make init
+	$ make setup
 	```
 
 2. Crie um banco de dados chamado `db_blog`. Para isso, é preciso que o servidor MySQL esteja executando na máquina. Execute o comando abaixo:
@@ -56,6 +56,7 @@ A configuração necessária será feita a partir do arquivo Makefile com o coma
 	```
 	$ make db-migrate
 	```
+
 4. Crie um usuário admin onde será criado um nome para usuário, um e-mail e uma senha (mínimo de 8 caracteres e que seja diferente do nome e e-mail). Execute o comando a seguir:
 
 	```
@@ -68,7 +69,7 @@ A configuração necessária será feita a partir do arquivo Makefile com o coma
 	$ make run
 	```
 
-	Ao entrar na página do administrador `http://localhost:8000/admin`, será pedido o nome e a senha. Basta entrar com os dados criados no paso anterior.
+	Ao entrar na página do administrador `http://localhost:8000/admin`, será pedido o nome e a senha. Basta entrar com os dados criados no passo anterior.
 
 6. Este item é opcional. Caso queira entrar na shell do python, execute o comando abaixo:
 
