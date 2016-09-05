@@ -12,35 +12,62 @@ def index(request):
 	context = {'latest': latest}
 	return render(request, 'meu_blog/index.html', context)
 
-def viewArtigo(resquest, titulo, dia, mes, ano):
+def viewArtigo(request, titulo, dia, mes, ano):
 
-	# Validação do dia ---->> Lembrar que não é referente se é número, caracter, mas verificar a partir da ideia de uma data..
+	params = {'erro': False, 'msg': 'Sucesso!', 'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano}
+	# Validação do dia 
 
-	# tipo, dia só pode ser de 1 até 31
-	# mes só pode de 1 até 12
-	# e pro ano é preciso pensar numa exceção
-	# pro título, restringe o tamanho dele.. no models.py, só vai até 100 caracteres.
+	#if not valida_dia(dia):
+
+		#text = "O dia %s não é um dia válido." % dia
+		#return HttpResponse(text)
+# -------
+
+	# Validação do Título
+
+ 	#if not valida_titulo(titulo):
+ 		#return render(request, 'meu_blog/artigo.html', {'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano})
+
+	# Validação do dia 
+
+	if not valida_dia(dia):
+		params['erro'] = True
+		params['msg'] = "O dia %s não é uma dia válido." % dia
 
 	# Validação do mês 
 
+	#if not valida_mes(mes):
+		#return render(request, 'meu_blog/artigo.html', {'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano})
+
 	# Validação do ano
 
-	text = "Título '%s', datada de %s/%s/%s." %(titulo, dia, mes, ano)
-	return HttpResponse(text)
+	#if not valida_ano(ano):
+		#return render(request, 'meu_blog/artigo.html', {'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano})
+
+	return render(request, 'meu_blog/artigo.html', params)
+
 
 def valida_titulo(titulo):
 
-	return 
+	if len(titulo) <= 100:
+		return True
+	return False
 
 def valida_dia(dia):
 
-	return 
+	if 0 < int(dia) <= 31:
+		return True
+	return False
 
 def valida_mes(mes):
 
-	return
+	if 0 < mes <= 12:
+		return True
+	return False
 
 def valida_ano(ano):
 
-	return
+	if  1900 <= ano <= 2050:
+		return True
+	return False
 
