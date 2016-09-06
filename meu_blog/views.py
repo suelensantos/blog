@@ -3,7 +3,6 @@
 
 from __future__ import unicode_literals # acrescentar para corrigir o erro de UnicodeDecodeError
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Artigo 
 
 # Create your views here.
@@ -14,35 +13,27 @@ def index(request):
 
 def viewArtigo(request, titulo, dia, mes, ano):
 
-	params = {'erro': False, 'msg': 'Sucesso!', 'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano}
-	# Validação do dia 
+	params = {'msg': [], 'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano}
 
-	#if not valida_dia(dia):
+	# Validação do título
 
-		#text = "O dia %s não é um dia válido." % dia
-		#return HttpResponse(text)
-# -------
-
-	# Validação do Título
-
- 	#if not valida_titulo(titulo):
- 		#return render(request, 'meu_blog/artigo.html', {'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano})
+	if not valida_titulo(titulo):
+		params['msg'].append("ERRO! O título %s não é válido. O limite é de 100 caracteres." % titulo)
 
 	# Validação do dia 
 
 	if not valida_dia(dia):
-		params['erro'] = True
-		params['msg'] = "O dia %s não é uma dia válido." % dia
+		params['msg'].append("ERRO! O dia %s não é válido." % dia)
 
 	# Validação do mês 
 
-	#if not valida_mes(mes):
-		#return render(request, 'meu_blog/artigo.html', {'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano})
+	if not valida_mes(mes):
+		params['msg'].append("ERRO! O mês %s não é válido." % mes)
 
 	# Validação do ano
 
-	#if not valida_ano(ano):
-		#return render(request, 'meu_blog/artigo.html', {'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano})
+	if not valida_ano(ano):
+		params['msg'].append("ERRO! O ano %s não é válido. É válido apenas de 1900 até 2050." % ano)
 
 	return render(request, 'meu_blog/artigo.html', params)
 
@@ -61,13 +52,13 @@ def valida_dia(dia):
 
 def valida_mes(mes):
 
-	if 0 < mes <= 12:
+	if 0 < int(mes) <= 12:
 		return True
 	return False
 
 def valida_ano(ano):
 
-	if  1900 <= ano <= 2050:
+	if  1900 <= int(ano) <= 2050:
 		return True
 	return False
 
