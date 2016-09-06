@@ -13,8 +13,8 @@ class Artigo(models.Model):
     titulo = models.CharField(max_length=100)
     conteudo = models.TextField()
     publicacao = models.DateTimeField(
-   		default = datetime.datetime.now(),
-   		blank = True
+      default = datetime.datetime.now(),
+      blank = True
    		)
 
     def foi_publicado_recentemente(self):

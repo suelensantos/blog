@@ -20,7 +20,7 @@ def viewArtigo(request, titulo, dia, mes, ano):
 	if not valida_titulo(titulo):
 		params['msg'].append("ERRO! O título %s não é válido. O limite é de 100 caracteres." % titulo)
 
-	# Validação do dia 
+	# Validação do dia 	
 
 	if not valida_dia(dia):
 		params['msg'].append("ERRO! O dia %s não é válido." % dia)

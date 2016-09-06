@@ -77,3 +77,8 @@ A configuração necessária será feita a partir do arquivo Makefile com o coma
 	$ make python-shell
 	```
 
+7. Este item é opcional. Caso queira testar as operações do seu código, execute o comando abaixo:
+
+	```
+	$ make test
+	```
