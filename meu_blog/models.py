@@ -12,14 +12,11 @@ class Artigo(models.Model):
 
     titulo = models.CharField(max_length=100)
     conteudo = models.TextField()
-    publicacao = models.DateTimeField(
-      default = datetime.datetime.now(),
-      blank = True
-   		)
+    publicacao = models.DateTimeField()
 
     def foi_publicado_recentemente(self):
-		now = timezone.now()
-		return now - datetime.timedelta(days=1) <= self.publicacao <= now
+		    now = timezone.now()
+		    return now - datetime.timedelta(days=1) <= self.publicacao <= now
 
     foi_publicado_recentemente.admin_order_field = 'publicacao'
     foi_publicado_recentemente.boolean = True
