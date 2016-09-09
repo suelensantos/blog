@@ -1,21 +1,32 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import unittest
+# ****** import pdb; pdb.set_trace() -> comandos: pp dir(variável); c (sair); n (next); l (posição que parou); response.content (apresenta o conteúdo); ... ******
+
 from django.test import TestCase
+
 from django.utils import timezone
 import datetime
-from .views import valida_titulo, valida_dia, valida_mes, valida_ano
+
+from .views import valida_titulo, valida_dia, valida_mes, valida_ano, viewArtigo
 from .models import Artigo
-from django.urls import reverse
-#from django.test import Client
+from django.core.urlresolvers import reverse
+from django.test.client import Client
 
 # Create your tests here.
 
-# EXEMPLO PARA OS MÉTODOS DE VALIDAÇÃO!
-# FAZER TBM PARA OS MÉTODOS VIEWARTIGO E INDEX - ACOMPANHAR NO SITE (MAIOR O CÓDIGO)!
+def criar_artigo(titulo, conteudo):
+    	# cria um artigo
+    	return Artigo.objects.create(titulo=titulo, conteudo=conteudo, publicacao=timezone.now())
 
-class ArtigoModelTestCase(unittest.TestCase):
+class ArtigoModelTestCase(TestCase):
+
+	'''def test_artigo_criacao(self):
+		artigo = criar_artigo(titulo='Somente um teste', conteudo='Sim, isso é apenas um teste.', dias=9)
+		self.assertTrue(isinstance(artigo, Artigo))
+		self.assertEqual(artigo.__unicode__(), artigo.titulo)'''
+
+	# --- TESTES PARA FUNÇÃO FOI_PUBLICADO_RECENTEMENTE()
 
 	def test_foi_publicado_recentemente(self):
 		# foi_publicado_recentemente() deve retornar Falso para perguntas cuja publicacao é no futuro
@@ -35,22 +46,35 @@ class ArtigoModelTestCase(unittest.TestCase):
 		pergunta_recente = Artigo(publicacao = time)
 		self.assertIs(pergunta_recente.foi_publicado_recentemente(), True)
 
-def criar_artigo(titulo, conteudo, dias):
-    	# cria um artigo
-    	time = timezone.now() + datetime.timedelta(days=dias)
-    	return Artigo.objects.create(titulo=titulo, conteudo=conteudo, publicacao=time)
 
-class ArtigoViewTestCase(unittest.TestCase):
- #-----
-    # Teste do método index
+class ArtigoViewTestCase(TestCase):
 
-	def test_index_sem_artigo(self):
-		# Se não há artigo, uma mensagem apropriada deve ser disparada
-		responder = self.client.get(reverse('meu_blog:index'))
-		self.assertEqual(responder.status_code, 200)
-        self.assertContains(responder, "Não há artigos disponíveis.")
-        self.assertQuerysetEqual(responder.context['latest'], [])
- #-----
+	def setUp(self):
+		self.client = Client()
+
+    # --- TESTES PARA FUNÇÃO INDEX()
+
+	def test_index_view_sem_artigo(self):
+		# Se não há artigo, uma mensagem apropriada deve ser exibida
+		response = self.client.get(reverse('index'))
+		self.assertEqual(response.status_code, 200)
+		self.assertIn('Sem artigos.', response.content)
+		self.assertQuerysetEqual(response.context['latest'], [])
+
+	def test_index_view_com_artigo(self):
+		# Se há artigo, uma mensagem apropriada deve ser exibida
+		criar_artigo(titulo='Somente um teste', conteudo='Sim, isso eh apenas um teste.')
+		response = self.client.get(reverse('index'))
+		self.assertQuerysetEqual(response.context['latest'], ['<Artigo: Somente um teste>'])
+
+    # --- TESTES PARA FUNÇÃO VIEWARTIGO()
+    # *** Dada a entrada da função, a saída corresponde igual? ***
+    # com o artigo criado, ver se os parâmetros da entrada batem com a da saída
+
+    #def test_viewArtigo_mensagem_de_erro(self):
+    #	itens = 
+
+ 	# --- TESTES PARA FUNÇÕES VALIDA...()
 
 	# Testes para validar título
 
