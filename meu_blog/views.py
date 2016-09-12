@@ -18,22 +18,22 @@ def viewArtigo(request, titulo, dia, mes, ano):
 	# Validação do título
 
 	if not valida_titulo(titulo):
-		params['msg'].append("ERRO! O título %s não é válido. O limite é de 100 caracteres." % titulo)
+		params['msg'].append("ERRO-01! O título %s não é válido. O limite é de 100 caracteres." % titulo)
 
 	# Validação do dia 	
 
 	if not valida_dia(dia):
-		params['msg'].append("ERRO! O dia %s não é válido." % dia)
+		params['msg'].append("ERRO-02! O dia %s não é válido." % dia)
 
 	# Validação do mês 
 
 	if not valida_mes(mes):
-		params['msg'].append("ERRO! O mês %s não é válido." % mes)
+		params['msg'].append("ERRO-03! O mês %s não é válido." % mes)
 
 	# Validação do ano
 
 	if not valida_ano(ano):
-		params['msg'].append("ERRO! O ano %s não é válido. É válido apenas de 1900 até 2050." % ano)
+		params['msg'].append("ERRO-04! O ano %s não é válido. É válido apenas de 1900 até 2050." % ano)
 
 	return render(request, 'meu_blog/artigo.html', params)
 

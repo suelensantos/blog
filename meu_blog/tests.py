@@ -65,14 +65,26 @@ class ArtigoViewTestCase(TestCase):
 		# Se há artigo, uma mensagem apropriada deve ser exibida
 		criar_artigo(titulo='Somente um teste', conteudo='Sim, isso eh apenas um teste.')
 		response = self.client.get(reverse('index'))
+		self.assertEqual(response.status_code, 200)
 		self.assertQuerysetEqual(response.context['latest'], ['<Artigo: Somente um teste>'])
 
     # --- TESTES PARA FUNÇÃO VIEWARTIGO()
-    # *** Dada a entrada da função, a saída corresponde igual? ***
-    # com o artigo criado, ver se os parâmetros da entrada batem com a da saída
 
-    #def test_viewArtigo_mensagem_de_erro(self):
-    #	itens = 
+	def test_viewArtigo_params_corretos(self):
+		# kwargs={'titulo': 'suelensantos', 'dia': '12', 'mes': '9', 'ano': '2016'}
+		response = self.client.get(reverse('artigo', args=['suelensantos', '12', '09', '2016']))
+		self.assertEqual(response.status_code, 200)
+		self.assertQuerysetEqual(response.context['msg'], [])
+
+	def test_viewArtigo_params_incorretos(self):
+		# kwargs={'titulo': 'suelensantos', 'dia': '12', 'mes': '9', 'ano': '2016'}
+		response = self.client.get(reverse('artigo', args=['abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz', '32', '15', '2052']))
+		self.assertEqual(response.status_code, 200)
+		self.assertIn('ERRO-01!', response.context['msg'][0])
+		self.assertIn('ERRO-02!', response.context['msg'][1])
+		self.assertIn('ERRO-03!', response.context['msg'][2])
+		self.assertIn('ERRO-04!', response.context['msg'][3])
+
 
  	# --- TESTES PARA FUNÇÕES VALIDA...()
 
