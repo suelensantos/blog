@@ -82,3 +82,15 @@ A configuração necessária será feita a partir do arquivo Makefile com o coma
 	```
 	$ make test
 	```
+
+8. Este item é opcional. Caso queira ver possíveis erros encontrados fora do padrão do código Python, execute o comando abaixo:
+
+	```
+	$ make pep8
+	```
+
+9. Este item é opcional. Caso queira ver o total de possíveis erros encontrados fora do padrão do código Python, execute o comando abaixo:
+
+	```
+	$ make pep8-total
+	```
