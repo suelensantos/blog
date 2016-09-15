@@ -1,15 +1,67 @@
 <html>
 
+<head>
+
+<title>Blog Estag</title>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'meu_blog/style.css' %}"/> 
+<!-- <style type="text/css">
+
+body {
+
+	font-family: arial;
+	background-color:  silver;
+	color: white;
+}
+
+h2 {
+
+	margin-bottom: 10px;
+}
+
+h3 {
+
+	margin: 0;
+	background-color: #eee;
+	padding: 5px;
+	font-size: 1.2em;
+}
+
+.artigo {
+
+	border: 1px solid black;
+	background-color: white;
+	color: black;
+}
+
+.conteudo {
+
+	padding: 10px;
+}
+
+</style> -->
+</head>
+
 <body>
 
-<h1>Meu blog</h1>
+<h2>Blog Estag</h2>
 
 {% if latest %}
 
 	{% for artigo in latest %}
-	<h2>{{ artigo.titulo }}</h2>
 
-	    {{ artigo.conteudo }}
+	<div class="artigo">
+
+		<h3>{{ artigo.titulo }}</h3>
+
+		<div class="conteudo">
+
+			Publicado em {{ artigo.publicacao }} <br/>
+			{{ artigo.conteudo }}
+
+		</div>
+	</div>
 
 	{% endfor %}
 	

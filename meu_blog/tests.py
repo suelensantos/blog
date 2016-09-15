@@ -72,10 +72,20 @@ class ArtigoViewTestCase(TestCase):
         self.assertQuerysetEqual(response.context['latest'],
                                  ['<Artigo: Somente um teste>'])
 
+    # --- TESTE PARA FUNÇÃO INDEXARTIGO()
+
+    def test_index_artigo_view_primeiro_artigo(self):
+        # Se o id corresponde ao primeiro artigo, uma mensagem
+        # apropriada deve ser exibida
+        criar_artigo(titulo='Somente um teste',
+                     conteudo='Sim, isso eh apenas um teste.')
+        response = self.client.get(reverse('index_artigo', args=['1']))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('/artigo/1/', response.request['PATH_INFO'])
+
     # --- TESTES PARA FUNÇÃO VIEWARTIGO()
 
     def test_viewArtigo_params_corretos(self):
-
         response = self.client.get(
             reverse('artigo', args=['suelensantos', '12', '09', '2016'])
         )

@@ -15,6 +15,12 @@ def index(request):
     return render(request, 'meu_blog/index.html', context)
 
 
+def indexArtigo(request, artigo_id):
+    artigo = Artigo.objects.get(id=artigo_id)
+    context = {'artigo': artigo}
+    return render(request, 'meu_blog/index_artigo.html', context)
+
+
 def viewArtigo(request, titulo, dia, mes, ano):
 
     params = {'msg': [], 'titulo': titulo, 'dia': dia, 'mes': mes, 'ano': ano}
