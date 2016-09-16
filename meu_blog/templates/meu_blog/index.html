@@ -1,75 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
 <html>
-
 <head>
 
-<title>Blog Estag</title>
+	<title>Blog Estag</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'meu_blog/index.css' %}"/> 
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'meu_blog/style.css' %}"/> 
-<!-- <style type="text/css">
-
-body {
-
-	font-family: arial;
-	background-color:  silver;
-	color: white;
-}
-
-h2 {
-
-	margin-bottom: 10px;
-}
-
-h3 {
-
-	margin: 0;
-	background-color: #eee;
-	padding: 5px;
-	font-size: 1.2em;
-}
-
-.artigo {
-
-	border: 1px solid black;
-	background-color: white;
-	color: black;
-}
-
-.conteudo {
-
-	padding: 10px;
-}
-
-</style> -->
 </head>
-
 <body>
 
-<h2>Blog Estag</h2>
+	<h2>Blog Estag</h2>
 
-{% if latest %}
+	{% if latest %}
 
-	{% for artigo in latest %}
+		{% for artigo in latest %}
 
-	<div class="artigo">
+		<div class="artigo">
+		    <a href="{% url 'index_artigo' artigo_id=artigo.id %}">
+			    <h3>{{ artigo.titulo }}</h3>
+			</a>
 
-		<h3>{{ artigo.titulo }}</h3>
+			<div class="conteudo">
+				Publicado há {{ artigo.publicacao|timesince }}. <br/>
+				{{ artigo.conteudo }}
 
-		<div class="conteudo">
-
-			Publicado em {{ artigo.publicacao }} <br/>
-			{{ artigo.conteudo }}
-
+			</div>
 		</div>
-	</div>
 
-	{% endfor %}
-	
-{% else %}
-	Sem artigos.
+		{% endfor %}
+		
+	{% else %}
+		Sem artigos.
 
-{% endif %}
+	{% endif %}
+
+	{% include "rodape.html" %}
 
 </body>
-
 </html>

@@ -8,7 +8,7 @@
 from django.test import TestCase
 from django.utils import timezone
 import datetime
-from .views import valida_titulo, valida_dia, valida_mes, valida_ano, viewArtigo
+from .views import valida_titulo, valida_dia, valida_mes, valida_ano
 from .models import Artigo
 from django.core.urlresolvers import reverse
 from django.test.client import Client
@@ -47,6 +47,12 @@ class ArtigoModelTestCase(TestCase):
         time = timezone.now() - datetime.timedelta(hours=1)
         pergunta_recente = Artigo(publicacao=time)
         self.assertIs(pergunta_recente.foi_publicado_recentemente(), True)
+
+    # --- TESTE PARA FUNÇÃO GET_ABSOLUTE_URL()
+
+    def test_get_absolute_url(self):
+        id = Artigo(id=1)
+        self.assertEqual('/artigo/1/', id.get_absolute_url())
 
 
 class ArtigoViewTestCase(TestCase):

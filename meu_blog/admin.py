@@ -17,4 +17,5 @@ class ArtigoAdmin(admin.ModelAdmin):
     list_filter = ['publicacao']
     search_fields = ['titulo']
 
+
 admin.site.register(Artigo, ArtigoAdmin)
