@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<!-- Aqui coloca o nome do próprio site: Blog Estag -->
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Blog Estag</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
