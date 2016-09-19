@@ -1,13 +1,6 @@
-<html>
+{% extends 'base.html' %}
 
-<body>
 
-<h2> Blog Estag </h2>
-
-<h3> {{artigo.titulo}} </h3>
-
-{{artigo.conteudo}}
-
-</body>
-
-</html>
+{% block titulo %} {{ artigo.titulo }} - {{ block.super }} {% endblock %}
+{% block h2 %} {{ artigo.titulo }} {% endblock %}
+{% block conteudo %} {{ artigo.conteudo }} {% endblock %}

@@ -1,40 +1,29 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
 
-	<title>Blog Estag</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'meu_blog/index.css' %}"/> 
 
-</head>
-<body>
+{% block conteudo %}
+<img src="{% static 'meu_blog/images/globo.jpg' %}" alt='Minha imagem'/>
+{% if latest %}
 
-	<h2>Blog Estag</h2>
+	{% for artigo in latest %}
 
-	{% if latest %}
+	<div class="artigo">
+	    <a href="{% url 'index_artigo' artigo_id=artigo.id %}">
+		    <h3>{{ artigo.titulo }}</h3>
+		</a>
 
-		{% for artigo in latest %}
+		<div class="conteudo">
+			Publicado há {{ artigo.publicacao|timesince }}. <br/>
+			{{ artigo.conteudo }}
 
-		<div class="artigo">
-		    <a href="{% url 'index_artigo' artigo_id=artigo.id %}">
-			    <h3>{{ artigo.titulo }}</h3>
-			</a>
-
-			<div class="conteudo">
-				Publicado há {{ artigo.publicacao|timesince }}. <br/>
-				{{ artigo.conteudo }}
-
-			</div>
 		</div>
+	</div>
 
-		{% endfor %}
-		
-	{% else %}
-		Sem artigos.
+	{% endfor %}
+	
+{% else %}
+	Sem artigos.
 
-	{% endif %}
-
-	{% include 'rodape.html' %}
-
-</body>
-</html>
+{% endif %}
+{% endblock %}
