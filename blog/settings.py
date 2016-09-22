@@ -128,3 +128,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
+EMAIL_HOST = ''
+EMAIL_HOST_USER = 'suelen_cordeiro@hotmail.com'
+EMAIL_HOST_PASSWORD = '1234'
+EMAIL_SUBJECT_PREFIX = '[Blog Estag]'
+
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
