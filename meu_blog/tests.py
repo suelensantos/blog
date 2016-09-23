@@ -153,3 +153,8 @@ class ArtigoViewTestCase(TestCase):
     def test_valida_ano_invalido(self):
         ano_invalido = valida_ano(2060)
         self.assertFalse(ano_invalido)
+
+    # --- TESTES PARA FUNÇÃO CONTATO()
+
+    
+    

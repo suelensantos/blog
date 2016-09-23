@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 from django.db import models
 import datetime
@@ -15,7 +18,7 @@ class Artigo(models.Model):
 
     titulo = models.CharField(max_length=100)
     conteudo = models.TextField()
-    publicacao = models.DateTimeField()
+    publicacao = models.DateTimeField('Data de publicação')
 
     def __unicode__(self):
         return self.titulo

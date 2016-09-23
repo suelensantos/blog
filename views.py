@@ -3,47 +3,58 @@
 
 from django.shortcuts import render
 from django import forms
-from django.core.mail import send_mail
-from meu_blog.models import Artigo
+import MySQLdb
 
-# verificar um modo de fazer essa parte
-# igual ao indexArtigo da outra view (do blog)
-# verificar o mesmo na pág 60
+# ***** IMPORTANTE ******
+# Criar uma tabela
+# Com os campos nome, email, mensagem
+# E na função enviar(), return chamando
+# o banco para salvar os dados
+
+# conectar ao banco mysql
+db = MySQLdb.connect(host="localhost", user="root", passwd="", db="db_blog")
+
+cursor = db.cursor()
 
 
 class FormContato(forms.Form):
     nome = forms.CharField(max_length=50)
-    email = forms.EmailField(required=False)
+    email = forms.EmailField(required=True)
     mensagem = forms.Field(widget=forms.Textarea)
 
-    def enviar(self):
-        titulo = 'Mensagem enviada pelo site'
-        destino = 'suelen_cordeiro@hotmail.com'
-        texto = """
-        Nome: %(nome)s
-        E-mail: %(email)s
-        Mensagem: %(mensagem)s
-        """ % self.cleaned_data
+    add_contact = ("INSERT INTO contato "
+                   "(id, nome, email, mensagem) "
+                   "VALUES (%(id)s, %(nome)s, %(email)s, %(mensagem)s")
 
-        send_mail(
-            subject=titulo,
-            message=texto,
-            from_email=destino,
-            recipient_list=[destino],
-        )
+    # Inserir informações do contato
+    data_contact = {
+        'id': 1,
+        'nome': nome,
+        'email': email,
+        'mensagem': mensagem,
+    }
+
+    def enviar(self):
+        return cursor.execute(self.add_contact, self.data_contact)
 
 
 def contato(request):
+    mostrar = 'Envie um contato!'
     if request.method == 'POST':
-        form = FormContato()
+        form = FormContato(request.POST)
 
         if form.is_valid():
-            form.enviar()
-            mostrar = 'Contato enviado!'
+            mostrar = form.enviar()
             form = FormContato()
     else:
         form = FormContato()
 
-    artigo = Artigo.objects.all()
-    context = {'artigo': artigo, 'mostrar': mostrar}
+    context = {'mostrar': mostrar, 'form': form}
     return render(request, 'contato.html', context)
+
+
+# Ter certeza de que os dados foram comitados no banco
+db.commit()
+
+# cursor.close()
+db.close()
