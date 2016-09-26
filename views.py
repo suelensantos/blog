@@ -11,16 +11,14 @@ import MySQLdb
 # E na função enviar(), return chamando
 # o banco para salvar os dados
 
-# conectar ao banco mysql
-db = MySQLdb.connect(host="localhost", user="root", passwd="", db="db_blog")
-
-cursor = db.cursor()
-
 
 class FormContato(forms.Form):
     nome = forms.CharField(max_length=50)
     email = forms.EmailField(required=True)
     mensagem = forms.Field(widget=forms.Textarea)
+
+    # conectar ao banco mysql
+    db = MySQLdb.connect(host="localhost", user="root", passwd="", db="db_blog")
 
     add_contact = ("INSERT INTO contato "
                    "(id, nome, email, mensagem) "
@@ -28,14 +26,22 @@ class FormContato(forms.Form):
 
     # Inserir informações do contato
     data_contact = {
-        'id': 1,
+        'id': id,
         'nome': nome,
         'email': email,
         'mensagem': mensagem,
     }
 
     def enviar(self):
+        # return 'Contato enviado!'
+        cursor = self.db.cursor()
         return cursor.execute(self.add_contact, self.data_contact)
+
+    # Ter certeza de que os dados foram comitados no banco
+    db.commit()
+
+    # cursor.close()
+    db.close()
 
 
 def contato(request):
@@ -51,10 +57,3 @@ def contato(request):
 
     context = {'mostrar': mostrar, 'form': form}
     return render(request, 'contato.html', context)
-
-
-# Ter certeza de que os dados foram comitados no banco
-db.commit()
-
-# cursor.close()
-db.close()

@@ -156,5 +156,28 @@ class ArtigoViewTestCase(TestCase):
 
     # --- TESTES PARA FUNÇÃO CONTATO()
 
-    
-    
+    def test_contato_form_valido(self):
+
+        dados_post = {
+            'nome': 'Suelen Santos',
+            'email': 'suelensantos@hotmail.com',
+            'mensagem': 'Este eh apenas um teste que valida o formulario de contato.'
+        }
+
+        response = self.client.get('/contato/')
+        self.assertContains(response, '<h2>  Contato  </h2>')
+        response = self.client.post('/contato/', dados_post)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Contato enviado!', response.context['mostrar'])
+
+    def test_contato_form_invalido(self):
+
+        dados_post = {
+            'nome': 'Suelen Santos',
+            'email': 'nao eh um email'
+        }
+
+        response = self.client.post('/contato/', dados_post)
+        self.assertEqual(response.status_code, 200)
+        self.assertFormError(response, 'form', 'mensagem', u'Este campo é obrigatório.')
+        self.assertFormError(response, 'form', 'email', u'Informe um endereço de email válido.')
