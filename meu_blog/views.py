@@ -5,6 +5,8 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from .models import Artigo
+from .forms import FormContato
+# from .models import Contato
 
 # Create your views here.
 
@@ -74,3 +76,18 @@ def valida_ano(ano):
     if 1900 <= int(ano) <= 2050:
         return True
     return False
+
+
+def contato(request):
+    mostrar = 'Envie um contato!'
+    if request.method == 'POST':
+        form = FormContato(request.POST)
+
+        if form.is_valid():
+            mostrar = form.enviar()
+            form = FormContato()
+    else:
+        form = FormContato()
+
+    context = {'mostrar': mostrar, 'form': form}
+    return render(request, 'meu_blog/contato.html', context)

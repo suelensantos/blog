@@ -48,12 +48,6 @@ class ArtigoModelTestCase(TestCase):
         pergunta_recente = Artigo(publicacao=time)
         self.assertIs(pergunta_recente.foi_publicado_recentemente(), True)
 
-    # --- TESTE PARA FUNÇÃO GET_ABSOLUTE_URL()
-
-    def test_get_absolute_url(self):
-        id = Artigo(id=1)
-        self.assertEqual('/artigo/1/', id.get_absolute_url())
-
 
 class ArtigoViewTestCase(TestCase):
 
@@ -87,7 +81,7 @@ class ArtigoViewTestCase(TestCase):
                      conteudo='Sim, isso eh apenas um teste.')
         response = self.client.get(reverse('index_artigo', args=['1']))
         self.assertEqual(response.status_code, 200)
-        self.assertIn('/artigo/1/', response.request['PATH_INFO'])
+        self.assertIn('/meu_blog/artigo/1/', response.request['PATH_INFO'])
 
     # --- TESTES PARA FUNÇÃO VIEWARTIGO()
 
@@ -164,9 +158,9 @@ class ArtigoViewTestCase(TestCase):
             'mensagem': 'Este eh apenas um teste que valida o formulario de contato.'
         }
 
-        response = self.client.get('/contato/')
+        response = self.client.get('/meu_blog/contato/')
         self.assertContains(response, '<h2>  Contato  </h2>')
-        response = self.client.post('/contato/', dados_post)
+        response = self.client.post('/meu_blog/contato/', dados_post)
         self.assertEqual(response.status_code, 200)
         self.assertIn('Contato enviado!', response.context['mostrar'])
 
@@ -177,7 +171,7 @@ class ArtigoViewTestCase(TestCase):
             'email': 'nao eh um email'
         }
 
-        response = self.client.post('/contato/', dados_post)
+        response = self.client.post('/meu_blog/contato/', dados_post)
         self.assertEqual(response.status_code, 200)
         self.assertFormError(response, 'form', 'mensagem', u'Este campo é obrigatório.')
         self.assertFormError(response, 'form', 'email', u'Informe um endereço de email válido.')

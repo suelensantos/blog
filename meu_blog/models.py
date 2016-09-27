@@ -27,9 +27,13 @@ class Artigo(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.publicacao <= now
 
-    def get_absolute_url(self):
-        return '/artigo/%d/' % self.id
-
     foi_publicado_recentemente.admin_order_field = 'publicacao'
     foi_publicado_recentemente.boolean = True
     foi_publicado_recentemente.short_description = 'Publicado recentemente?'
+
+
+'''class Contato(models.Model):
+
+    nome = models.CharField(max_length=50)
+    email = models.EmailField(required=True)
+    mensagem = models.Field(widget=models.TextArea)'''
