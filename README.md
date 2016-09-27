@@ -51,7 +51,8 @@ A configuração necessária será feita a partir do arquivo Makefile com o coma
 	$ make create-db
 	```
 
-3. É preciso criar tabelas no banco de dados antes de ser usado. Para fazer isso, execute o comando a seguir:
+3. É preciso criar tabelas no banco de dados antes de ser usado. Contudo, isso só precisa ser feito caso tenha feito alguma(s) mudança(s) no modelo da aplicação, onde a(s) mesma(s) serão armazenada(s) como migração (arquivo(s) no disco). Para fazer isso, execute o comando a seguir: 
+** Obs.: O comando abaixo irá executar um outro comando antes para armazenar a(s) mudança(s) na migração. 
 
 	```
 	$ make db-migrate

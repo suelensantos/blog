@@ -18,7 +18,7 @@ class Artigo(models.Model):
 
     titulo = models.CharField(max_length=100)
     conteudo = models.TextField()
-    publicacao = models.DateTimeField('Data de publicação')
+    publicacao = models.DateTimeField('data de publicação')
 
     def __unicode__(self):
         return self.titulo
@@ -32,8 +32,8 @@ class Artigo(models.Model):
     foi_publicado_recentemente.short_description = 'Publicado recentemente?'
 
 
-'''class Contato(models.Model):
+class Contato(models.Model):
 
     nome = models.CharField(max_length=50)
-    email = models.EmailField(required=True)
-    mensagem = models.Field(widget=models.TextArea)'''
+    email = models.EmailField('E-mail')
+    mensagem = models.TextField()

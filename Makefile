@@ -7,7 +7,10 @@ run:
 create-superuser-admin:
 	@python manage.py createsuperuser
 
-db-migrate: 
+db-migrations:
+	@python manage.py makemigrations meu_blog
+
+db-migrate: db-migrations
 	@python manage.py migrate
 
 create-db: 

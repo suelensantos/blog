@@ -6,7 +6,6 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from .models import Artigo
 from .forms import FormContato
-# from .models import Contato
 
 # Create your views here.
 

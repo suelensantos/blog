@@ -1,4 +1,5 @@
 from django import forms
+from .models import Contato
 
 
 class FormContato(forms.Form):
@@ -7,4 +8,6 @@ class FormContato(forms.Form):
     mensagem = forms.Field(widget=forms.Textarea)
 
     def enviar(self):
+        c = Contato(nome=self.data.get("nome"), email=self.data.get("email"), mensagem=self.data.get("mensagem"))
+        c.save()
         return 'Contato enviado!'
