@@ -1,9 +1,30 @@
 {% load static %}
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns= "http://www.w3.org/1999/xhtml"
+	  xml:lang="pt-br"
+	  lang="pt-br">
 <head>
 
 	<title> {% block titulo %} Blog Estag {% endblock %} </title>
+
+	{% block meta %}
+	<meta http-equiv="Content-type"
+		  content="text/html;
+		  charset=utf-8" />
+	<meta http-equiv="Content-Language" content="pt-br" />
+	<meta name="keywords" 
+	      content="Python, Django, blog, Estag" />
+	<meta name="description" content="Este é o blog da Suelen." />
+	{% endblock meta %}
+
+	{# {% block feeds %}
+	<link rel="alternate"
+		type="application/rss+xml"
+		title="Ultimos artigos publicados"
+		href="/rss/ultimos/" />
+	{% endblock feeds %} #} 
+
 	<link rel="stylesheet" type="text/css" href="{% static 'meu_blog/css/base.css' %}"/>
 
 </head>
