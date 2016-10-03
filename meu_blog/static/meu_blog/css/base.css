@@ -2,20 +2,47 @@ body {
 
 	font-family: arial;
 	background-color: silver;
-	color: black;
+	color: #333;
 }
 
 h2 {
 
-	margin-bottom: 10px;
+	margin: 10px 20px 10px 20px;
 }
 
 h3 {
 
 	margin: 0;
-	background-color: #eee;
+	background-color: #d3d3d3;
 	padding: 5px;
 	font-size: 1.2em;
+}
+
+#tudo {
+
+	position: absolute;
+	background-color: white;
+	margin: 20px 0px 20px -390px;
+	width: 760px;
+	left: 50%;
+	border: 10px solid #aaa;
+}
+
+#topo {
+
+	font-size: 3em;
+	margin: 20px;
+}
+
+#topo #foto {
+
+	float: right;
+	background-image: url("../images/globo.jpg");
+	background-repeat: no-repeat;
+	background-position: -20px -30px;
+	width: 56px;
+	height: 56px;
+	border: 1px solid #47a;
 }
 
 .artigo {

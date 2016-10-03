@@ -4,35 +4,70 @@
 <html xmlns= "http://www.w3.org/1999/xhtml"
 	  xml:lang="pt-br"
 	  lang="pt-br">
-<head>
+	<head>
 
-	<title> {% block titulo %} Blog Estag {% endblock %} </title>
+		<title> {% block titulo %} Blog Estag {% endblock %} </title>
 
-	{% block meta %}
-	<meta http-equiv="Content-type"
-		  content="text/html;
-		  charset=utf-8" />
-	<meta http-equiv="Content-Language" content="pt-br" />
-	<meta name="keywords" 
-	      content="Python, Django, blog, Estag" />
-	<meta name="description" content="Este é o blog da Suelen." />
-	{% endblock meta %}
+		<!-- Descreve tags HTML de meta-definições -->
+		{% block meta %} 
+		<meta http-equiv="Content-type"
+			  content="text/html;
+			  charset=utf-8" />
+		<meta http-equiv="Content-Language" content="pt-br" />
+		<meta name="keywords" 
+		      content="Python, Django, blog, Estag" />
+		<meta name="description" content="Este é o blog da Suelen." />
+		{% endblock meta %}
 
-	{# {% block feeds %}
-	<link rel="alternate"
-		type="application/rss+xml"
-		title="Ultimos artigos publicados"
-		href="/rss/ultimos/" />
-	{% endblock feeds %} #} 
+		<!-- Feeds -->
+		<!-- {% block feeds %}
+		<link rel="alternate"
+			type="application/rss+xml"
+			title="Ultimos artigos publicados"
+			href="/rss/ultimos/" />
+		{% endblock feeds %} -->
 
-	<link rel="stylesheet" type="text/css" href="{% static 'meu_blog/css/base.css' %}"/>
+		<!-- Estilos -->
+		{% block style %}
+		<link rel="stylesheet" type="text/css" href="{% static 'meu_blog/css/base.css' %}"/>
+		{% endblock style %}
 
-</head>
-<body>
+		<!-- JavaScripts -->
+		{% block scripts %}
+		{% endblock scripts %}
 
-	<h2> {% block h2 %} Blog Estag {% endblock %} </h2>
-	{% block conteudo %} {% endblock %}
-	{% include 'meu_blog/rodape.html' %}
+	</head>
 
-</body>
+	<body>
+
+		<div id="tudo">
+			<div id="topo"> 
+				{% block topo %}
+				<div id="foto">&nbsp;</div>
+				Blog Estag
+				{% endblock topo %}
+			</div>
+
+			<div id="menu">
+				{% block menu %}
+				{% spaceless %}
+				<ul>
+					<li><a href="{% url 'index' %}">Página inicial</a></li>
+					<li><a href="/sobre-mim/">Sobre mim</a></li>
+					<li><a href="{% url 'contato' %}">Contato</a></li>
+				</ul>
+				{% endspaceless %}
+				{% endblock menu %}
+			</div>
+
+			<h2>{% block h2 %}{% endblock %}</h2>
+
+			<div class="corpo">
+				{% block conteudo %}{% endblock %}
+			</div>
+
+			{% include 'meu_blog/rodape.html' %}
+		</div>
+
+	</body>
 </html>
