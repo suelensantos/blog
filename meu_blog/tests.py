@@ -162,7 +162,7 @@ class ContatoViewTestCase(TestCase):
         }
 
         response = self.client.get('/meu_blog/contato/')
-        self.assertContains(response, '<h2>  Contato  </h2>')
+        self.assertContains(response, '<title>  Contato -  Blog Estag   </title>')
         response = self.client.post('/meu_blog/contato/', dados)
         self.assertEqual(response.status_code, 200)
         self.assertIn('Contato enviado!', response.context['mostrar'])

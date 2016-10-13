@@ -36,7 +36,7 @@ def viewArtigo(request, titulo, dia, mes, ano):
     if not valida_dia(dia):
         params['msg'].append("ERRO-02! O dia %s não é válido." % dia)
 
-    # Validação do mê
+    # Validação do mês
 
     if not valida_mes(mes):
         params['msg'].append("ERRO-03! O mês %s não é válido." % mes)
@@ -90,3 +90,7 @@ def contato(request):
 
     context = {'mostrar': mostrar, 'form': form}
     return render(request, 'meu_blog/contato.html', context)
+
+
+def sobreMim(request):
+    return render(request, 'meu_blog/sobre-mim.html')
