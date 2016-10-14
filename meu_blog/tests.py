@@ -178,3 +178,13 @@ class ContatoViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertFormError(response, 'form', 'mensagem', u'Este campo é obrigatório.')
         self.assertFormError(response, 'form', 'email', u'Informe um endereço de email válido.')
+
+
+class SobreMimViewTestCase(TestCase):
+
+    # --- TESTE PARA FUNÇÃO SOBREMIM()
+
+    def test_sobre_mim(self):
+        response = self.client.get(reverse('sobre-mim'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Suelen', response.content)
