@@ -95,3 +95,9 @@ A configuração necessária será feita a partir do arquivo Makefile com o coma
 	```
 	$ make pep8-total
 	```
+
+10. Faz a compilação dos arquivos .scss em .css:
+
+	```
+	$ make css
+	```

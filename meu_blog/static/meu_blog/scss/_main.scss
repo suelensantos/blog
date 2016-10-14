@@ -1,0 +1,86 @@
+body {
+
+	font-family: arial;
+	background-color: $cinzaClaro;
+	color: $corLetra;
+}
+
+h2 {
+
+	margin: 10px 20px 10px 20px;
+}
+
+h3 {
+
+	margin: 0;
+	background-color: $cinzaClaro;
+	padding: 5px;
+	font-size: 1.2em;
+}
+
+#tudo {
+
+	position: absolute;
+	background-color: $branco;
+	margin: 20px 0px 20px -390px;
+	width: 760px;
+	left: 50%;
+	border: 10px solid #aaa;
+}
+
+#topo {
+
+	font-size: 3em;
+	margin: 20px;
+
+    #foto {
+
+        float: right;
+        background-image: url("../images/globo.jpg");
+        background-repeat: no-repeat;
+        background-position: -20px -30px;
+        width: 56px;
+        height: 56px;
+        border: 1px solid #47a;
+    }
+}
+
+.corpo {
+
+	margin: 20px 20px 0 20px;
+}
+
+/* .artigo {
+
+	border: 1px solid black;
+	background-color: $branco;
+	color: $preto;
+}
+
+.conteudo {
+
+	padding: 10px;
+} */
+
+.rodape {
+
+	clear: both;
+	overflow: hidden;
+	background-color: $cinzaEscuro;
+	margin: 20px;
+	font-size: 1.0em;
+	color: $branco;
+	padding: 10px;
+	text-align: center;
+
+	/* border: 1px solid black;
+	background-color: $branco;
+	color: $cinzaEscuro;
+	margin-top: 10px;
+	padding: 10px; */
+
+    a {
+
+    	color: $branco;
+    }
+}

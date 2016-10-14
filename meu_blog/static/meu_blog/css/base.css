@@ -1,86 +1,64 @@
 body {
-
-	font-family: arial;
-	background-color: silver;
-	color: #333;
-}
+  font-family: arial;
+  background-color: #D3D3D3;
+  color: #333333; }
 
 h2 {
-
-	margin: 10px 20px 10px 20px;
-}
+  margin: 10px 20px 10px 20px; }
 
 h3 {
-
-	margin: 0;
-	background-color: #d3d3d3;
-	padding: 5px;
-	font-size: 1.2em;
-}
+  margin: 0;
+  background-color: #D3D3D3;
+  padding: 5px;
+  font-size: 1.2em; }
 
 #tudo {
-
-	position: absolute;
-	background-color: white;
-	margin: 20px 0px 20px -390px;
-	width: 760px;
-	left: 50%;
-	border: 10px solid #aaa;
-}
+  position: absolute;
+  background-color: #FFFFFF;
+  margin: 20px 0px 20px -390px;
+  width: 760px;
+  left: 50%;
+  border: 10px solid #aaa; }
 
 #topo {
-
-	font-size: 3em;
-	margin: 20px;
-}
-
-#topo #foto {
-
-	float: right;
-	background-image: url("../images/globo.jpg");
-	background-repeat: no-repeat;
-	background-position: -20px -30px;
-	width: 56px;
-	height: 56px;
-	border: 1px solid #47a;
-}
+  font-size: 3em;
+  margin: 20px; }
+  #topo #foto {
+    float: right;
+    background-image: url("../images/globo.jpg");
+    background-repeat: no-repeat;
+    background-position: -20px -30px;
+    width: 56px;
+    height: 56px;
+    border: 1px solid #47a; }
 
 .corpo {
-
-	margin: 20px 20px 0 20px;
-}
+  margin: 20px 20px 0 20px; }
 
 /* .artigo {
 
 	border: 1px solid black;
-	background-color: white;
-	color: black;
+	background-color: $branco;
+	color: $preto;
 }
 
 .conteudo {
 
 	padding: 10px;
 } */
-
 .rodape {
-
-	clear: both;
-	overflow: hidden;
-	background-color: gray;
-	margin: 20px;
-	font-size: 1.0em;
-	color: white;
-	padding: 10px;
-	text-align: center;
-
-	/* border: 1px solid black;
-	background-color: white;
-	color: gray;
-	margin-top: 10px;
-	padding: 10px; */
-}
-
-.rodape a {
-
-	color: white;
-}
+  clear: both;
+  overflow: hidden;
+  background-color: #666666;
+  margin: 20px;
+  font-size: 1.0em;
+  color: #FFFFFF;
+  padding: 10px;
+  text-align: center;
+  /* border: 1px solid black;
+  background-color: $branco;
+  color: $cinzaEscuro;
+  margin-top: 10px;
+  padding: 10px; */ }
+  .rodape a {
+    color: #FFFFFF; }
