@@ -29,4 +29,4 @@ pep8-total:
 	@pep8 --ignore=E501 . | wc -l
 
 css:
-	sass --sourcemap=none --update meu_blog/static/meu_blog/scss:meu_blog/static/meu_blog/css
+	sass --sourcemap=none --watch meu_blog/static/meu_blog/scss:meu_blog/static/meu_blog/css
