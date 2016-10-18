@@ -1,7 +1,7 @@
 body {
   font-family: arial;
   background-color: #D3D3D3;
-  color: #333333; }
+  color: #595959; }
 
 h2 {
   margin: 10px 20px 10px 20px; }
@@ -27,25 +27,32 @@ h3 {
     float: right;
     background-image: url("../images/globo.jpg");
     background-repeat: no-repeat;
-    background-position: -20px -30px;
+    background-position: center;
+    background-size: 120% 120%;
     width: 56px;
     height: 56px;
     border: 1px solid #47a; }
 
 .corpo {
   margin: 20px 20px 0 20px; }
+  .corpo img {
+    max-width: 150px;
+    max-height: 110px;
+    width: auto;
+    height: auto; }
 
-/* .artigo {
-
-	border: 1px solid black;
-	background-color: $branco;
-	color: $preto;
-}
+.artigo {
+  margin: 10px 0 10px 0;
+  border: 1px solid black;
+  background-color: #FFFFFF; }
+  .artigo h3 {
+    text-decoration: underline; }
+  .artigo a {
+    color: #595959; }
 
 .conteudo {
+  padding: 10px; }
 
-	padding: 10px;
-} */
 .rodape {
   clear: both;
   overflow: hidden;
@@ -55,10 +62,43 @@ h3 {
   color: #FFFFFF;
   padding: 10px;
   text-align: center;
-  /* border: 1px solid black;
-  background-color: $branco;
-  color: $cinzaEscuro;
-  margin-top: 10px;
-  padding: 10px; */ }
+  margin-top: 70px; }
   .rodape a {
     color: #FFFFFF; }
+
+#menu {
+  clear: both;
+  overflow: hidden;
+  background-color: #666666;
+  margin-top: 10px;
+  margin-block-end: 15px;
+  height: 26px;
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #FFFFFF; }
+  #menu ul {
+    margin: 0;
+    padding: 0; }
+    #menu ul li {
+      float: left;
+      list-style: none;
+      padding: 5px; }
+
+#menu ul li a:link, #menu ul li a:visited, #menu ul li a:active {
+  padding: 5px;
+  text-decoration: none;
+  color: #FFFFFF; }
+
+#menu ul li a:hover {
+  background-color: #999999;
+  color: #FFFFFF; }
+
+form label {
+  display: block; }
+
+textarea {
+  height: 100px; }
+
+th {
+  text-align: right;
+  padding-right: 5px; }

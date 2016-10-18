@@ -12,7 +12,7 @@ h2 {
 
 h3 {
 
-	margin: 0;
+	margin: 0;	
 	background-color: $cinzaClaro;
 	padding: 5px;
 	font-size: 1.2em;
@@ -38,7 +38,8 @@ h3 {
         float: right;
         background-image: url("../images/globo.jpg");
         background-repeat: no-repeat;
-        background-position: -20px -30px;
+        background-position: center;
+        background-size: 120% 120%;
         width: 56px;
         height: 56px;
         border: 1px solid #47a;
@@ -48,19 +49,37 @@ h3 {
 .corpo {
 
 	margin: 20px 20px 0 20px;
+
+	img {
+
+	    max-width: 150px;
+	    max-height: 110px;
+	    width: auto;
+	    height: auto;
+  	}
 }
 
-/* .artigo {
+.artigo {
 
+	margin: 10px 0 10px 0;
 	border: 1px solid black;
 	background-color: $branco;
-	color: $preto;
+
+	h3 {
+
+		text-decoration: underline;
+	}
+
+	a {
+
+		color: $corLetra;
+	}
 }
 
 .conteudo {
 
 	padding: 10px;
-} */
+}
 
 .rodape {
 
@@ -72,15 +91,65 @@ h3 {
 	color: $branco;
 	padding: 10px;
 	text-align: center;
-
-	/* border: 1px solid black;
-	background-color: $branco;
-	color: $cinzaEscuro;
-	margin-top: 10px;
-	padding: 10px; */
+	margin-top: 70px;
 
     a {
 
     	color: $branco;
     }
+}
+
+#menu {
+	
+	clear: both;
+	overflow: hidden;
+	background-color: $cinzaEscuro;
+	margin-top: 10px;
+	margin-block-end: 15px;
+	height: 26px;
+	font-size: 1.0em;
+	font-weight: bold;
+	color: $branco;
+
+	ul {
+
+		margin: 0;
+		padding: 0;
+
+		li {
+
+			float: left;
+			list-style: none;
+			padding: 5px;
+		}
+	}
+}
+
+#menu ul li a:link, #menu ul li a:visited, #menu ul li a:active {
+	
+	padding: 5px;
+	text-decoration: none;
+	color: $branco;
+}
+
+#menu ul li a:hover {
+	
+	background-color: $cinzaMediano;
+	color: $branco;
+}
+
+form label {
+	
+	display: block;
+}
+
+textarea {
+	
+	height: 100px;
+}
+
+th {
+	
+	text-align: right;
+	padding-right: 5px;
 }

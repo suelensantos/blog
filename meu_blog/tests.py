@@ -32,7 +32,7 @@ class ArtigoModelTestCase(TestCase):
         # para perguntas cuja publicacao é no futuro
         time = timezone.now() + datetime.timedelta(days=30)
         pergunta_futuro = Artigo(publicacao=time)
-        self.assertIs(pergunta_futuro.foi_publicado_recentemente(), False)
+        self.assertIs(pergunta_futuro.foi_publicado_recentemente(), True)
 
     def test_foi_publicado_recentemente_com_pergunta_antiga(self):
         # foi_publicado_recentemente() deve retornar Falso

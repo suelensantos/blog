@@ -24,8 +24,7 @@ class Artigo(models.Model):
         return self.titulo
 
     def foi_publicado_recentemente(self):
-        now = timezone.now()
-        return now - datetime.timedelta(days=1) <= self.publicacao <= now
+        return self.publicacao >= timezone.now() - datetime.timedelta(days=1)
 
     foi_publicado_recentemente.admin_order_field = 'publicacao'
     foi_publicado_recentemente.boolean = True
