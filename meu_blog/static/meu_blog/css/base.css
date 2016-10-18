@@ -39,7 +39,10 @@ h3 {
     max-width: 150px;
     max-height: 110px;
     width: auto;
-    height: auto; }
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
 
 .artigo {
   margin: 10px 0 10px 0;
